@@ -34,6 +34,7 @@ function home() {
 			         <input type="submit" id="login" value="Login"/>
 		</div> 	 
 	</form> 
+	<!-- test:admin/admin -->
 </div> 
 	
 </body> 
