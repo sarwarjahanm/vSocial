@@ -1,0 +1,15 @@
+1. Put the contents in respective directories.
+
+2. Add the following at the end of LoadModule section of httpd.conf
+
+#mod_security module
+LoadModule security2_module modules/mod_security2.so
+LoadModule unique_id_module modules/mod_unique_id.so
+
+
+2. Add the following within Include section of httpd.conf
+
+#mod_security Config
+Include conf/modsecurity.conf
+Include conf/csr/XSS.conf
+Include conf/csr/SQLI.conf
