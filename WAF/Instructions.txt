@@ -1,4 +1,7 @@
 1. Put the contents in respective directories.
+ a. mod_security2.so to apache/modules
+ b. yajl.dll to apache/bin
+ c. modsecurity.conf and csr folder to apache-conf
 
 2. Add the following at the end of LoadModule section of httpd.conf
 
