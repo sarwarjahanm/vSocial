@@ -1,0 +1,1 @@
+ErrorDocument 406 http://localhost:81/Vsocial/detected.php
