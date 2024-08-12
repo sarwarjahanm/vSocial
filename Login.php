@@ -26,8 +26,8 @@ function home() {
 	
 <div style="text-align:right;"> 
 <button onclick="home()">Home Page</button>  <button onclick="register()">Registration Page</button><br/><br/>
-	<h3>Login Below</h3>
-	<form action="Login.php" method="post"> 
+	<h3>Login Below</h3>    <!-- Bob/bob -->
+	<form action="Login.php" method="post">  
 		<div>
 			Username <input type="text" name="username" id="username" maxlength=20/><br/><br/>
 			Password <input type="password" name="password" id="password" maxlength=20/></br><br/>
