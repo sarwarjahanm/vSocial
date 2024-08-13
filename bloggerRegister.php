@@ -4,7 +4,7 @@
 <html lang="en"> 
 
 <head> 
-<title>Register-vSocial</title>
+<title>Blogger Register-vSocial</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">	
 	<!-- Required meta tags --> 
 	<meta charset="utf-8"> 
@@ -25,12 +25,12 @@ function blogger() {
 }
 </script>
 	
-<body style="background-image: url(http://localhost:81/VSocial/bg.jpg); background-position: center"> 
+<body style="background-image: url(http://localhost:81/VSocial/bbg.jpg); background-position: center"> 
 
 <div style="text-align:right;">
 <button onclick="home()">Home Page</button>  <button onclick="login()">User Login</button>   <button onclick="blogger()">Blogger Login</button><br/><br/>
 	<h3>Register Below</h3>
-	<form action="Register.php" method="post"> 
+	<form action="bloggerRegister.php" method="post"> 
 		<div>
 			Username         <input type="test" name="username" id="username" maxlength=20/><br/><br/>
 			Password         <input type="password" name="password" id="password" maxlength=20/></br><br/>
@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$password = $_POST["password"]; 
 	$cpassword = $_POST["cpassword"]; 
 				
-	$sql = "Select * from users where username='$username'"; 
+	$sql = "Select * from bloggers where username='$username'"; 
 	
 	$result = mysqli_query($conn, $sql); 
 	
@@ -70,7 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		else{
 			if(($password == $cpassword) && $exists==false) { 
 					 
-				$sql = "INSERT INTO `users` ( `username`, 
+				$sql = "INSERT INTO `bloggers` ( `username`, 
 					`password`) VALUES ('$username', 
 					'$password')"; 
 		

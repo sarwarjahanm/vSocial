@@ -31,7 +31,8 @@ $body = $_POST["body"];
 <html lang="en"> 
 
 <head> 
-	
+<title>WriteBlog-vSocial</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">	
 	<!-- Required meta tags --> 
 	<meta charset="utf-8"> 
 	<meta name="viewport" content= 
@@ -42,7 +43,7 @@ $body = $_POST["body"];
 
 <script>
 function viewblog(){
-				var viewBlogUrl = "http://localhost:81/Vsocial/allBlog.php";
+				var viewBlogUrl = "http://localhost:81/Vsocial/allBlog.php?back=blogger";
 				location.replace(viewBlogUrl);
 			}
  function logout(){
@@ -51,7 +52,7 @@ function viewblog(){
 			}
 </script>
 
-<body> 
+<body style="background-image: url(http://localhost:81/VSocial/cbg.jpg); background-position: center"> 
 	
 	
 <div style="text-align:center;"> 

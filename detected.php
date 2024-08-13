@@ -7,6 +7,7 @@
 ?>
 <HTML><HEAD>
  <TITLE>Attack Detected!</TITLE>
+<link rel="icon" type="image/x-icon" href="alert.ico">
 </HEAD><BODY>
 <br/>
 <div style="text-align:center;">

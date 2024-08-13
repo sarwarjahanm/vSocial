@@ -14,7 +14,8 @@
 <html lang="en"> 
 
 <head> 
-	
+<title>searchUser-vSocial</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">	
 	<!-- Required meta tags --> 
 	<meta charset="utf-8"> 
 	<meta name="viewport" content= 
@@ -29,7 +30,7 @@
 }
 </script>
 
-<body> 
+<body style="background-image: url(http://localhost:81/VSocial/bg.jpg); background-position: center"> 
 	
 	
 <div style="text-align:center;"> 
@@ -41,15 +42,15 @@
 $username = $_POST["username"];
 		
 		if($cond == false){
-		$sql = "SELECT fname, lname, address from USERS WHERE username='".$username."'"; 		
+		$sql = "SELECT fname, lname, address, pic from USERS WHERE username='".$username."'"; 		
 		$result = mysqli_query($conn, $sql);
 		
-		$sql2 = "Select pic from users where username='".$username."'";
+		/* $sql2 = "Select pic from users where username='".$username."'";
 		$result2 = mysqli_query($conn, $sql2);	
 		while ($udetails = mysqli_fetch_array(
                         $result2,MYSQLI_ASSOC)):;
 		$pic = $udetails["pic"];						
-		endwhile;
+		endwhile; */
 		
 		if (mysqli_num_rows($result) > 0) {
 			$cond = true;
@@ -81,6 +82,7 @@ $username = $_POST["username"];
             while ($details = mysqli_fetch_array(
                         $result,MYSQLI_ASSOC)):; 
             
+			$pic = $details["pic"];
 			echo '<tr style="border: 1px solid black;">
 					<td style="border: 1px solid black;">'.$details["fname"].'</td>
 					<td style="border: 1px solid black;">'.$details["lname"].'</td>

@@ -34,7 +34,8 @@ $message = $_POST["message"];
 <html lang="en"> 
 
 <head> 
-	
+<title>sendMessge-vSocial</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">	
 	<!-- Required meta tags --> 
 	<meta charset="utf-8"> 
 	<meta name="viewport" content= 
@@ -49,7 +50,7 @@ $message = $_POST["message"];
 }
 </script>
 
-<body> 
+<body style="background-image: url(http://localhost:81/VSocial/dbg.jpg); background-position: center"> 
 	
 	
 <div style="text-align:center;"> 

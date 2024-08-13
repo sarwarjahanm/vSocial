@@ -20,14 +20,14 @@ $addr = $_POST["addr"];
 	$picpath = $picdir . basename($_FILES["profilepic"]["name"]);
 	move_uploaded_file($_FILES['profilepic']['tmp_name'], 'pics/'.$_FILES["profilepic"]["name"]);
 	
-	$sql2 = "UPDATE `users` SET pic='".$picpath."' WHERE username='".$me."'"; 
+	$sql2 = "UPDATE `admins` SET pic='".$picpath."' WHERE username='".$me."'"; 
 	mysqli_query($conn, $sql2);
 	
 	}
 
 	if($fname != "" && $lname != ""){
 		$showSuccess = "Profile Updated!";
-		$sql = "UPDATE `users` SET fname='".$fname."', lname='".$lname."', address='".$addr."' WHERE username='".$me."'"; 
+		$sql = "UPDATE `admins` SET fname='".$fname."', lname='".$lname."', address='".$addr."' WHERE username='".$me."'"; 
 		
 		mysqli_query($conn, $sql);
 	}
@@ -55,19 +55,19 @@ $addr = $_POST["addr"];
 
 <script>
 function myProfile(){
-				var profileUrl = "http://localhost:81/Vsocial/profile.php";
+				var profileUrl = "http://localhost:81/Vsocial/adminProfile.php";
 				location.replace(profileUrl);
 			}
 </script>
 
-<body style="background-image: url(http://localhost:81/VSocial/dbg.jpg); background-position: center"> 
+<body style="background-image: url(http://localhost:81/VSocial/aabg.png); background-position: center"> 
 	
 	
 <div style="text-align:center;"> 
 <button onclick="myProfile()">My Profile</button> <br/><br/>
 <?php echo '<h3>Hi  '.$me.', update your details below </h3><br/><br/>';
 
-echo '<form name="editprofile" action="http://localhost:81/Vsocial/editprofile.php" method="POST" enctype="multipart/form-data">
+echo '<form name="editprofile" action="http://localhost:81/Vsocial/editprofileAdmin.php" method="POST" enctype="multipart/form-data">
 <div style="text-align:center;">
 <pre>           Profile Pic <input type="file" name="profilepic" id="profilepic"/></pre><br/>
 	First Name <input name="fname" type="text" maxlength=100/><br/><br/>

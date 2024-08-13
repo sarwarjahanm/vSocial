@@ -13,7 +13,8 @@
 <html lang="en"> 
 
 <head> 
-	
+<title>inbox-vSocial</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">	
 	<!-- Required meta tags --> 
 	<meta charset="utf-8"> 
 	<meta name="viewport" content= 
@@ -28,7 +29,7 @@
 }
 </script>
 
-<body> 
+<body style="background-image: url(http://localhost:81/VSocial/dbg.jpg); background-position: center"> 
 	
 	
 <div style="text-align:center;"> 

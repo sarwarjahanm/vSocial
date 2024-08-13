@@ -9,7 +9,8 @@
 	<meta name="viewport" content= 
 		"width=device-width, initial-scale=1, 
 		shrink-to-fit=no"> 
-	
+<title>Login-vSocial</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">	
 </head> 
 	<script>
 function register() {
@@ -21,7 +22,7 @@ function home() {
 
 </script>
 	
-<body> 
+<body style="background-image: url(http://localhost:81/VSocial/bg.jpg); background-position: center"> 
 	
 	
 <div style="text-align:right;"> 

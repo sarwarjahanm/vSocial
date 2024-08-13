@@ -3,10 +3,10 @@
 	$currentuser = $_COOKIE['user'];
 	
 		
-	$sql = "Select username,fname,lname,address from users where username='".$currentuser."'";
+	$sql = "Select username,fname,lname,address from admins where username='".$currentuser."'";
 	$result = mysqli_query($conn, $sql);
 	
-	$sql2 = "Select pic from users where username='".$currentuser."'";
+	$sql2 = "Select pic from admins where username='".$currentuser."'";
 	$result2 = mysqli_query($conn, $sql2);
 	
 	while ($mydetails = mysqli_fetch_array(
@@ -34,14 +34,14 @@
 
 <script>
  function editProfile() {
- location.replace("http://localhost:81/Vsocial/editprofile.php")
+ location.replace("http://localhost:81/Vsocial/editprofileAdmin.php")
 }
 function dashboard() {
- location.replace("http://localhost:81/Vsocial/dashboard.php")
+ location.replace("http://localhost:81/Vsocial/adminDashboard.php")
 }
 </script>
 
-<body style="background-image: url(http://localhost:81/VSocial/dbg.jpg); background-position: center"> 
+<body style="background-image: url(http://localhost:81/VSocial/aabg.png); background-position: center"> 
 	
 	
 <div style="text-align:center;"> 
@@ -74,7 +74,7 @@ function dashboard() {
       echo '</table>';
 ?>
 <br/><button onclick="editProfile()">Edit Profile</button> <br/><br/>
-<br/><button onclick="dashboard()">Back to Dashboard</button> <br/><br/>
+<br/><button onclick="dashboard()">Back to Admin Dashboard</button> <br/><br/>
 </div>
 </body> 
 </html> 
