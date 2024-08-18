@@ -24,23 +24,40 @@
 </head> 
 
 <script>
+const params = new URLSearchParams(location.search);
+var val = params.get("back");
+var currentUser = document.cookie.split( ';' ).map( function( x ) { return x.trim().split( '=' ); } ).reduce( function( a, b ) { a[ b[ 0 ] ] = b[ 1 ]; return a; }, {} )[ "user" ];
+
+
+ function loading(){
+		 document.getElementById("user").innerHTML = currentUser;
+ }
+
  function dashboard() {
+	 
 	 if(window.location.search.substring(1)=="back=blogger"){
-		 location.replace("http://localhost:81/Vsocial/writeBlog.php")
+		 location.replace("http://localhost:81/Vsocial/writeBlog.php");
+	 }
+	 else if(val == "user"){
+		 location.replace("http://localhost:81/Vsocial/Dashboard.php");
+	 }
+	 else if(val == "blogger"){
+		 location.replace("http://localhost:81/Vsocial/writeBlog.php");
 	 }
 	 else{
-  location.replace("http://localhost:81/Vsocial/Dashboard.php")
+		document.getElementById("errmsg").innerHTML = "Return URL is invalid: "+val;
 	 }
 }
 </script>
 
-<body style="background-image: url(http://localhost:81/VSocial/dbg.jpg); background-position: center"> 
+<body onload="loading()" style="background-image: url(http://localhost:81/VSocial/dbg.jpg); background-position: center"> 
 	
 	
 <div style="text-align:center;"> 
 <button onclick="dashboard()">Go Back to Dashboard</button> <br/><br/>
-<h2>Blog Posts</h2><br/><br/><br/>
-<?php echo 'Welcome  '.$currentuser.',<br/> Below are all the Blog Posts<br/><br/>';
+<h2>Blog Posts</h2><br/><input type="hidden" id="who"/>
+<p> Welcome <b id="user"></b>,</p><br/>
+<?php echo 'Below are all the Blog Posts<br/><br/>';
 
 	  echo '<table style="border: 1px solid black;margin-left:auto;margin-right:auto; "> 
 				<tr style="border: 1px solid black;">
@@ -61,6 +78,7 @@
 			
       echo '</table>';
 ?>
+<br/><br/><br/><p id="errmsg">If any error occurs, error messages will be displayed here!</p>
 </div>
 </body> 
 </html> 

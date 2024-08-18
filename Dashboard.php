@@ -32,7 +32,7 @@ $user=$_COOKIE['user'];
 				location.replace(mymsgUrl);
 			}
 			function viewblog(){
-				var viewBlogUrl = "http://localhost:81/Vsocial/allBlog.php";
+				var viewBlogUrl = "http://localhost:81/Vsocial/allBlog.php?back=user";
 				location.replace(viewBlogUrl);
 			}
 			function myProfile(){
