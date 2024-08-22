@@ -1,8 +1,8 @@
 <?php 
 
-	$servername = "localhost"; 
+	$servername = "https://infoseccamp.com/apps"; 
 	$username = "InfoSecCamp"; 
-	$password = "InfoSecCamp"; 
+	$password = "InfoSec@Camp"; 
 
 	$database = "vsocial"; 
  
