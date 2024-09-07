@@ -32,10 +32,13 @@ function blogger() {
 	<h3>Register Below</h3>
 	<form action="bloggerRegister.php" method="post"> 
 		<div>
-			Username         <input type="test" name="username" id="username" maxlength=20/><br/><br/>
+			Username         <input type="text" name="username" id="username" maxlength=20/><br/><br/>
 			Password         <input type="password" name="password" id="password" maxlength=20/></br><br/>
 			Confirm Password <input type="password" name="cpassword" id="cpassword" maxlength=20/></br><br/>
-			                 <input type="submit" id="register" value="Register"/>
+			First Name <input type="text" name="fname" id="fname" maxlength=25/></br><br/>
+			Last Name <input type="text" name="lname" id="lname" maxlength=25/></br><br/>
+			Address <input type="textarea" name="address" id="address" maxlength=200/></br><br/>
+			        <input type="submit" id="register" value="Register"/>
 		</div> 	 
 	</form> 
 </div> 
@@ -56,6 +59,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$username = $_POST["username"]; 
 	$password = $_POST["password"]; 
 	$cpassword = $_POST["cpassword"]; 
+	$fname = $_POST["fname"];
+	$lname = $_POST["lname"];
+	$address = $_POST["address"];
 				
 	$sql = "Select * from bloggers where username='$username'"; 
 	
@@ -70,9 +76,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		else{
 			if(($password == $cpassword) && $exists==false) { 
 					 
-				$sql = "INSERT INTO `bloggers` ( `username`, 
-					`password`) VALUES ('$username', 
-					'$password')"; 
+				$sql = "INSERT INTO `bloggers` ( `username`,`password`,`fname`,`lname`,`address`) VALUES ('$username','$password','$fname','$lname','$address')";
 		
 				$result = mysqli_query($conn, $sql); 
 		

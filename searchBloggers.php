@@ -2,7 +2,7 @@
 	include 'dbconnect.php';
 	$showError = false;	
 	$pic = '';
-	$sql = "SELECT fname, lname, address from USERS WHERE username=''"; 		
+	$sql = "SELECT fname, lname, address from bloggers WHERE username=''"; 		
 	$result = mysqli_query($conn, $sql);
 	$cond = false;
 	
@@ -14,7 +14,7 @@
 <html lang="en"> 
 
 <head> 
-<title>searchUser-vSocial</title>
+<title>searchBlogger-vSocial</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">	
 	<!-- Required meta tags --> 
 	<meta charset="utf-8"> 
@@ -43,8 +43,9 @@
 		if($username==''){
 			$showError = "Enter a username and click on Search.";
 		}
+		
 		if($cond == false){
-		$sql = "SELECT fname, lname, address, pic from USERS WHERE username='".$username."'"; 		
+		$sql = "SELECT fname, lname, address, pic from bloggers WHERE username='".$username."'"; 		
 		$result = mysqli_query($conn, $sql);
 		
 		/* $sql2 = "Select pic from users where username='".$username."'";
@@ -58,7 +59,7 @@
 			$cond = true;
 		} else {
 			if($username != ''){
-			$showError = "Aww snap! No user details found for user: ".htmlentities($username)."!";
+			$showError = "Aww snap! No user details found for bloggername: ".$username."!";
 			}
 			else {
 			$showError = "Enter a username and click on Search.";	
@@ -69,7 +70,7 @@
 }
 	
 	  echo '<br/> Enter username to view the details.<br/><br/>';
-	  echo '<form name="searchUser" action="http://localhost:81/Vsocial/searchUser.php" method="GET">
+	  echo '<form name="searchUser" action="http://localhost:81/Vsocial/searchBloggers.php" method="GET">
 			Username <input type="text" name="username"><br/><br/>';
 	  echo '<input type="submit" value="Search"></pre><br/><br/></form> ';
 
