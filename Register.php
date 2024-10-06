@@ -75,6 +75,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 					'$password')"; 
 		
 				$result = mysqli_query($conn, $sql); 
+				
+				$sqlc = "SELECT * FROM users";
+				$result2 = mysqli_query($conn, $sqlc); 				
+				$ucount = mysqli_num_rows($result2);
+				
+				$xml = new DOMDocument('1.0', 'utf-8');
+				$xml->formatOutput = true; 
+				$xml->preserveWhiteSpace = false;
+				$xml->load('usercount.xml');
+
+				$element = $xml->getElementsByTagName('counts')->item(0);  
+
+				$usercount = $element->getElementsByTagName('users')->item(0);
+
+				$usercount->nodeValue = $ucount;
+				htmlentities($xml->save('usercount.xml'));
+				
 		
 				if ($result) { 
 					$showAlert = true; 

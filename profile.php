@@ -36,6 +36,9 @@
  function editProfile() {
  location.replace("http://localhost:81/Vsocial/editprofile.php")
 }
+function changePassword() {
+ location.replace("http://localhost:81/Vsocial/changePassword.php")
+}
 function dashboard() {
  location.replace("http://localhost:81/Vsocial/dashboard.php")
 }
@@ -73,7 +76,7 @@ function dashboard() {
 			
       echo '</table>';
 ?>
-<br/><button onclick="editProfile()">Edit Profile</button> <br/><br/>
+<br/><button onclick="editProfile()">Edit Profile</button> 	<button onclick="changePassword()">Change Password</button><br/>
 <br/><button onclick="dashboard()">Back to Dashboard</button> <br/><br/>
 </div>
 </body> 

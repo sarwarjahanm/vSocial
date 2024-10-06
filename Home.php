@@ -31,6 +31,9 @@ function searchUser() {
 function searchBloggers() {
   location.replace("http://localhost:81/Vsocial/searchBloggers.php?username=")
 }
+function counts() {
+  location.replace("http://localhost:81/Vsocial/userCount.php")
+}
 </script>
 	
 <body style="background-image: url(http://localhost:81/VSocial/bg.jpg); background-position: center"> 
@@ -41,6 +44,7 @@ function searchBloggers() {
 <p>A social page where you can register and send private messages to other users and can also publish your blogs or stories!</p>
 <p>You can visit our Registration or Login page by clicking the following buttons.</p><br/>
 <pre><button onclick="register()">Registration Page</button>  <button onclick="login()">User Login Page</button>  <button onclick="blogin()">Blogger Login Page</button>  <button onclick="searchUser()">Search Users</button>  <button onclick="searchBloggers()">Search Bloggers</button></pre>
+<br/><button onclick="counts()">User Counts</button>
 </div> 
 	
 </body> 

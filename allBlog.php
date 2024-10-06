@@ -55,7 +55,7 @@ var currentUser = document.cookie.split( ';' ).map( function( x ) { return x.tri
 	
 <div style="text-align:center;"> 
 <button onclick="dashboard()">Go Back to Dashboard</button> <br/><br/>
-<h2>Blog Posts</h2><br/><input type="hidden" id="who"/>
+<h2>Blog Posts</h2><br/>
 <p> Welcome <b id="user"></b>,</p><br/>
 <?php echo 'Below are all the Blog Posts<br/><br/>';
 

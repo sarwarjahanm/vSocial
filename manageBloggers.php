@@ -10,7 +10,7 @@
 	
 <html> 
 <head>
-<title>Manage Users</title>
+<title>Manage Bloggers</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
@@ -22,11 +22,11 @@ function dashboard() {
 function delUser(usr) {
 	if (confirm("This will permanently delete: "+ usr)) {
 	  
-	  var redirectUrl = "http://localhost:81/Vsocial/manageUsers.php?usr="+usr;
+	  var redirectUrl = "http://localhost:81/Vsocial/manageBloggers.php?usr="+usr;
 	  location.replace(redirectUrl);
   
 } else {
-  location.replace("http://localhost:81/Vsocial/manageUsers.php?usr=Alls")
+  location.replace("http://localhost:81/Vsocial/manageBloggers.php?usr=Alls")
 }
 
 }
@@ -39,7 +39,7 @@ function delUser(usr) {
 <?php 
 	
 	if($cond == false){
-		$sql = "SELECT * from users"; 		
+		$sql = "SELECT * from bloggers"; 		
 		$result = mysqli_query($conn, $sql);
 		
 		
@@ -57,21 +57,21 @@ function delUser(usr) {
 		$uname = $_GET["usr"];
 		
 		if($uname == "Alls"){
-			$showError = "No Users deleted.";
+			$showError = "No Bloggers deleted.";
 		}
 		if($uname == "All"){
-			$showError = "All Users listed below:";
+			$showError = "All Bloggers listed below:";
 		}
 		
 		if($uname != "All" && $uname != "Alls"){
-		$sql5 = "DELETE from users WHERE username='".$uname."'"; 		
+		$sql5 = "DELETE from Bloggers WHERE username='".$uname."'"; 		
 				$result = mysqli_query($conn, $sql5);
 				$count = mysqli_affected_rows($conn);
 		$showError = "Deleted the user: ".$uname;
-		$sql = "SELECT * from users"; 		
+		$sql = "SELECT * from Bloggers"; 		
 		$result = mysqli_query($conn, $sql);
 		
-		$sqlc = "SELECT * FROM users";
+		$sqlc = "SELECT * FROM Bloggers";
 		$result2 = mysqli_query($conn, $sqlc); 				
 		$ucount = mysqli_num_rows($result2);
 				
@@ -80,7 +80,7 @@ function delUser(usr) {
 		$xml->preserveWhiteSpace = false;
 		$xml->load('usercount.xml');
 		$element = $xml->getElementsByTagName('counts')->item(0);  
-		$usercount = $element->getElementsByTagName('users')->item(0);
+		$usercount = $element->getElementsByTagName('bloggers')->item(0);
 		$usercount->nodeValue = $ucount;
 		htmlentities($xml->save('usercount.xml'));
 		}
@@ -89,7 +89,7 @@ function delUser(usr) {
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 		$cond = false;
 		if($cond == false){
-		$sql = "SELECT * from users"; 		
+		$sql = "SELECT * from Bloggers"; 		
 		$result = mysqli_query($conn, $sql);
 		
 		
@@ -111,7 +111,7 @@ function delUser(usr) {
 			$showError = "All inputs are required and cannot be blank!";				
 		}
 		else{
-				$sql = "UPDATE `users` SET fname='".$fname."', lname='".$lname."', address='".$address."' WHERE username='".$uname."'";  		
+				$sql = "UPDATE `Bloggers` SET fname='".$fname."', lname='".$lname."', address='".$address."' WHERE username='".$uname."'";  		
 				$result = mysqli_query($conn, $sql);
 				$count = mysqli_affected_rows($conn);
 				
@@ -122,14 +122,14 @@ function delUser(usr) {
 					$showError = "Entered Username not present in Database, so no updation happened.";
 				}				
 				
-				$sql = "SELECT * from users"; 		
+				$sql = "SELECT * from Bloggers"; 		
 				$result = mysqli_query($conn, $sql);
 		
 			}
 }
 	
 	  echo '<br/> Enter Username whose details to be updated and provide other details which will update.<br/><br/>';
-	  echo '<form name="updateUser" action="http://localhost:81/Vsocial/manageUsers.php" method="POST">
+	  echo '<form name="updateUser" action="http://localhost:81/Vsocial/manageBloggers.php" method="POST">
 			Username <input type="text" name="uname">
 			Fname <input type="text" name="fname">
 			Lname <input type="text" name="lname">

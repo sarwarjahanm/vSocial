@@ -79,6 +79,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				$sql = "INSERT INTO `bloggers` ( `username`,`password`,`fname`,`lname`,`address`) VALUES ('$username','$password','$fname','$lname','$address')";
 		
 				$result = mysqli_query($conn, $sql); 
+				
+				$sqlc = "SELECT * FROM bloggers";
+				$result2 = mysqli_query($conn, $sqlc); 				
+				$ucount = mysqli_num_rows($result2);
+				
+				$xml = new DOMDocument('1.0', 'utf-8');
+				$xml->formatOutput = true; 
+				$xml->preserveWhiteSpace = false;
+				$xml->load('usercount.xml');
+
+				$element = $xml->getElementsByTagName('counts')->item(0); 
+				$usercount = $element->getElementsByTagName('bloggers')->item(0);
+
+				$usercount->nodeValue = $ucount;
+				htmlentities($xml->save('usercount.xml'));
+				
 		
 				if ($result) { 
 					$showAlert = true; 

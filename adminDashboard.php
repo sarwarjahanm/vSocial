@@ -27,6 +27,10 @@ $user=$_COOKIE['user'];
 				var manageusersUrl = "http://localhost:81/Vsocial/manageUsers.php?usr=All";
 				location.replace(manageusersUrl);
 			}
+			function managebloggers(){
+				var managebloggersUrl = "http://localhost:81/Vsocial/manageBloggers.php?usr=All";
+				location.replace(managebloggersUrl);
+			}
 			function manageBlogs(){
 				var manageBlogsUrl = "http://localhost:81/Vsocial/manageBlogs.php?blog=All";
 				location.replace(manageBlogsUrl);
@@ -53,7 +57,7 @@ $user=$_COOKIE['user'];
 echo 'You can perform following administrative operations.<br/><br/><br/>';
 
 
-echo '<pre><button onclick="manageusers()">Manage Users</button>  <button onclick="manageBlogs()">Manage Blogs</button>  <button onclick="myProfile()">My Profile</button></pre></div> ';
+echo '<pre><button onclick="manageusers()">Manage Users</button>  <button onclick="managebloggers()">Manage Bloggers</button>  <button onclick="manageBlogs()">Manage Blogs</button>  <button onclick="myProfile()">My Profile</button></pre></div> ';
 
 
 

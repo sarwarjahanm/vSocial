@@ -42,6 +42,18 @@ function home() {
 $showAlert = false; 
 $showError = false; 
 $exists=false; 
+				include 'dbconnect.php';
+				$sqlc = "SELECT * FROM admins";
+				$result2 = mysqli_query($conn, $sqlc); 				
+				$ucount = mysqli_num_rows($result2);				
+				$xml = new DOMDocument('1.0', 'utf-8');
+				$xml->formatOutput = true; 
+				$xml->preserveWhiteSpace = false;
+				$xml->load('usercount.xml');
+				$element = $xml->getElementsByTagName('counts')->item(0);
+				$usercount = $element->getElementsByTagName('admins')->item(0);
+				$usercount->nodeValue = $ucount;
+				htmlentities($xml->save('usercount.xml'));
 	
 if($_SERVER["REQUEST_METHOD"] == "POST") { 
 	 
