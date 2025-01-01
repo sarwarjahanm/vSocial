@@ -65,7 +65,7 @@ function myProfile(){
 	
 <div style="text-align:center;"> 
 <button onclick="myProfile()">My Profile</button> <br/><br/>
-<?php echo '<h3>Hi  '.$me.', update your details below </h3><br/><br/>';
+<?php echo '<h3>Hi  '.ucfirst($me).', update your details below </h3><br/><br/>';
 
 echo '<form name="editprofile" action="http://localhost:81/Vsocial/editprofile.php" method="POST" enctype="multipart/form-data">
 <div style="text-align:center;">

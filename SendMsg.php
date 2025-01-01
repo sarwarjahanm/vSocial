@@ -56,7 +56,7 @@ $message = $_POST["message"];
 <div style="text-align:center;"> 
 <button onclick="dashboard()">Go Back to Dashboard</button> <br/><br/>
 	<h2>Send Message to other users.</h2><br/><br/><br/><br/><br/>
-<?php echo 'Welcome  '.$sender.',<br/><br/><br/>';
+<?php echo 'Welcome  '.ucfirst($sender).',<br/><br/><br/>';
 
 echo 'Select a user from User List drop down and send your message<br/><br/><br/>';
 

@@ -39,6 +39,10 @@ $user=$_COOKIE['user'];
 				var profileUrl = "http://localhost:81/Vsocial/profile.php";
 				location.replace(profileUrl);
 			}
+			function photoAlbum(){
+				var albumUrl = "http://localhost:81/Vsocial/myAlbum.php";
+				location.replace(albumUrl);
+			}
 			function logout(){
 				var homepage = "http://localhost:81/Vsocial/Home.php";
 				location.replace(homepage);
@@ -52,12 +56,12 @@ $user=$_COOKIE['user'];
 	
 <div style="text-align:center;"> 
 	<h2>Vsocial Dashboard</h2><br/><br/><br/><br/><br/>
-<?php echo 'Welcome  '.$user.',&emsp;<button onclick="logout()">Log Out</button><br/><br/><br/>';
+<?php echo 'Welcome  '.ucfirst($user).',&emsp;<button onclick="logout()">Log Out</button><br/><br/><br/>';
 
 echo 'You can send messages to other users, read your inbox, view all Blogs or update your profile by clicking the following buttons.<br/><br/><br/>';
 
 
-echo '<pre><button onclick="sendmsg()">Send Message</button>  <button onclick="myInbox()">My inbox</button>  <button onclick="viewblog()">View Blog</button>  <button onclick="myProfile()">My Profile</button></pre></div> ';
+echo '<pre><button onclick="sendmsg()">Send Message</button>  <button onclick="myInbox()">My inbox</button>  <button onclick="viewblog()">View Blog</button>  <button onclick="myProfile()">My Profile</button>  <button onclick="photoAlbum()">My Photo Album</button></pre></div> ';
 
 
 

@@ -52,7 +52,7 @@ $user=$_COOKIE['user'];
 	
 <div style="text-align:center;"> 
 	<h2>Vsocial Admin Dashboard</h2><br/><br/><br/><br/><br/>
-<?php echo 'Welcome  '.$user.',&emsp;<button onclick="logout()">Log Out</button><br/><br/><br/>';
+<?php echo 'Welcome  '.ucfirst($user).',&emsp;<button onclick="logout()">Log Out</button><br/><br/><br/>';
 
 echo 'You can perform following administrative operations.<br/><br/><br/>';
 

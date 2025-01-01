@@ -28,9 +28,11 @@ const params = new URLSearchParams(location.search);
 var val = params.get("back");
 var currentUser = document.cookie.split( ';' ).map( function( x ) { return x.trim().split( '=' ); } ).reduce( function( a, b ) { a[ b[ 0 ] ] = b[ 1 ]; return a; }, {} )[ "user" ];
 
+var result = currentUser.charAt(0).toUpperCase() + currentUser.slice(1);
+
 
  function loading(){
-		 document.getElementById("user").innerHTML = currentUser;
+		 document.getElementById("user").innerHTML = result;
  }
 
  function dashboard() {

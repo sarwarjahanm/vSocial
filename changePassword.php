@@ -53,7 +53,7 @@ function myProfile(){
 	
 <div style="text-align:center;"> 
 <button onclick="myProfile()">My Profile</button> <br/><br/>
-<?php echo '<h3>Hi  '.$me.', Change your Password Below </h3><br/><br/>';
+<?php echo '<h3>Hi  '.ucfirst($me).', Change your Password Below </h3><br/><br/>';
 
 echo '<form name="changepassword" action="http://localhost:81/Vsocial/changePassword.php" method="POST">
 <div style="text-align:center;">

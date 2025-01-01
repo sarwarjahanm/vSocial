@@ -35,7 +35,7 @@
 <div style="text-align:center;"> 
 <button onclick="dashboard()">Go Back to Dashboard</button> <br/><br/>
 <h2>Inbox</h2><br/>
-<?php echo 'Welcome  '.$currentuser.',<br/><br/> Below are all your received messages<br/><br/>';
+<?php echo 'Welcome  '.ucfirst($currentuser).',<br/><br/> Below are all your received messages<br/><br/>';
 
 	  echo '<table style="border: 1px solid black;margin-left:auto;margin-right:auto; "> 
 				<tr style="border: 1px solid black;">

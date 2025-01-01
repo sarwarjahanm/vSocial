@@ -50,7 +50,7 @@ function dashboard() {
 <?php 
 	  echo '<img src="'.$pic.'" height=200 width=200 alt="Profile pic not uploaded yet!"><br/><br/>';
 
-	  echo 'Welcome  '.$currentuser.',<br/> Below are your details<br/><br/>'; 
+	  echo 'Welcome  '.ucfirst($currentuser).',<br/> Below are your details<br/><br/>'; 
 
 	  echo '<table style="border: 1px solid black;margin-left:auto;margin-right:auto; "> 
 				<tr style="border: 1px solid black;">
