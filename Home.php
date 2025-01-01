@@ -36,7 +36,7 @@ function counts() {
 }
 </script>
 	
-<body style="background-image: url(http://localhost:81/VSocial/bg.jpg); background-position: center"> 
+<body style="background-image: url(http://localhost:81/VSocial/dash.jpg); background-position: center"> 
 	
 	
 <div style="text-align:center;"> 

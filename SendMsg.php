@@ -50,7 +50,7 @@ $message = $_POST["message"];
 }
 </script>
 
-<body style="background-image: url(http://localhost:81/VSocial/dbg.jpg); background-position: center"> 
+<body style="background-image: url(http://localhost:81/VSocial/dash.jpg); background-position: center"> 
 	
 	
 <div style="text-align:center;"> 

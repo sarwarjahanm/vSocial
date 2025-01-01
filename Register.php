@@ -25,7 +25,7 @@ function blogger() {
 }
 </script>
 	
-<body style="background-image: url(http://localhost:81/VSocial/bg.jpg); background-position: center"> 
+<body style="background-image: url(http://localhost:81/VSocial/dash.jpg); background-position: center"> 
 
 <div style="text-align:right;">
 <button onclick="home()">Home Page</button>  <button onclick="login()">User Login</button>   <button onclick="blogger()">Blogger Login</button><br/><br/>
