@@ -69,9 +69,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 	else if(($password == $dbpassword)) {
 		$dashboard = "http://localhost:81/Vsocial/Dashboard.php?user=".$username;
+		session_start();
 		$cookie_name = "user";
 		$cookie_value = "$username";
 		setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+		
+		$cookie_name = "isloggedin";
+		$cookie_value = "true";
+		setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+		
+		$cookie_name = "isadmin";
+		$cookie_value = "false";
+		setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+		
 		header("Location: $dashboard");
 		die();
 	

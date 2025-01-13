@@ -40,7 +40,7 @@ $user=$_COOKIE['user'];
 				location.replace(profileUrl);
 			}
 			function logout(){
-				var homepage = "http://localhost:81/Vsocial/Home.php";
+				var homepage = "http://localhost:81/Vsocial/logout.php";
 				location.replace(homepage);
 			}
 		</script>';

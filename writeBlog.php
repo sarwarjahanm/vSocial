@@ -47,7 +47,7 @@ function viewblog(){
 				location.replace(viewBlogUrl);
 			}
  function logout(){
-				var homepage = "http://localhost:81/Vsocial/Home.php";
+				var homepage = "http://localhost:81/Vsocial/logout.php";
 				location.replace(homepage);
 			}
 </script>

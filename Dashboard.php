@@ -1,7 +1,5 @@
 <?php
-session_start();
-$user=$_COOKIE['user'];
-# $_SESSION["user"] = $user;	
+$user=$_COOKIE['user'];	
 
 ?>
 
@@ -44,7 +42,7 @@ $user=$_COOKIE['user'];
 				location.replace(albumUrl);
 			}
 			function logout(){
-				var homepage = "http://localhost:81/Vsocial/Home.php";
+				var homepage = "http://localhost:81/Vsocial/logout.php";
 				location.replace(homepage);
 			}
 		</script>';

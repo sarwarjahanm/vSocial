@@ -1,4 +1,9 @@
 
+<?php
+
+
+?>
+
 <!doctype html> 
 	
 <html lang="en"> 
@@ -49,9 +54,3 @@ function counts() {
 	
 </body> 
 </html> 
-
-
-<?php 
-	
-
-?> 

@@ -2,6 +2,11 @@
 	include 'dbconnect.php';
 	$showError = false;	
 	$cond = false;
+	if($_COOKIE['isloggedin'] == false) {
+	
+    header("location:Home.php");
+    exit();
+	}
 	
 ?>
 
