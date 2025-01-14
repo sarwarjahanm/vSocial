@@ -1,6 +1,8 @@
 <?php
 $user=$_COOKIE['user'];	
 
+$isadmin=$_COOKIE['isadmin'];
+
 ?>
 
 <!doctype html> 
@@ -45,6 +47,18 @@ $user=$_COOKIE['user'];
 				var homepage = "http://localhost:81/Vsocial/logout.php";
 				location.replace(homepage);
 			}
+			function manageusers(){
+				var manageusersUrl = "http://localhost:81/Vsocial/manageUsers.php?usr=All";
+				location.replace(manageusersUrl);
+			}
+			function managebloggers(){
+				var managebloggersUrl = "http://localhost:81/Vsocial/manageBloggers.php?usr=All";
+				location.replace(managebloggersUrl);
+			}
+			function manageBlogs(){
+				var manageBlogsUrl = "http://localhost:81/Vsocial/manageBlogs.php?blog=All";
+				location.replace(manageBlogsUrl);
+			}			
 		</script>';
 	
 ?>
@@ -61,7 +75,9 @@ echo 'You can send messages to other users, read your inbox, view all Blogs or u
 
 echo '<pre><button onclick="sendmsg()">Send Message</button>  <button onclick="myInbox()">My inbox</button>  <button onclick="viewblog()">View Blog</button>  <button onclick="myProfile()">My Profile</button>  <button onclick="photoAlbum()">My Photo Album</button></pre></div> ';
 
-
+if($isadmin=='true'){
+echo '<br/><br/><div style="text-align:center;"><pre><button onclick="manageusers()">Manage Users</button>  <button onclick="managebloggers()">Manage Bloggers</button>  <button onclick="manageBlogs()">Manage Blogs</button></pre></div> ';
+}
 
 ?>
 	
