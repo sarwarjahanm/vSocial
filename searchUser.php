@@ -94,7 +94,21 @@
             endwhile; 
 			
       echo '</table>';
-	  echo '<img src="'.$pic.'" height=250 width=250 alt="Profile pic not found!"><br/><br/>';
+	  echo '<br/>Profile Picture:<br/>';
+	  echo '<img src="'.$pic.'" height=250 width=250 alt="Profile pic not set for this user!"><br/><br/>';
+	  echo '<br/>Photo Album:<br/>';
+	  
+		$tmpd = "photoAlbums/";
+		$dirname = $tmpd.$username."/";
+		$publicdir = $dirname."public/";
+		$publicimages = glob($publicdir."*.jpg");
+		
+		if (!is_dir($publicdir)) {
+			echo 'Photo Album unavailable for this user!';
+		}
+		foreach($publicimages as $image1) {
+			echo ' <img height=300 width=300 src="'.$image1.'" /> ';
+		}
 	  
 	}
 	  
@@ -104,6 +118,7 @@ if($showError) {
 			alert-dismissible fade show" role="alert"> 
 		<strong>'.$showError.'</strong>';
 }
+
 
 ?>
 </div>

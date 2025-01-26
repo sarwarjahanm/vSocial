@@ -1,27 +1,52 @@
-<?php
+<?php	
 	include 'dbconnect.php';
 	$me = $_COOKIE['user'];
 	$showError = false;
 	$showSuccess = false;
 	
+	if (isset($_POST['Privacy'])) {
+	$privacy = $_POST['Privacy'];
+	} else {
+	$privacy = "";
+	}
+	
+	
 	$tmpd = "photoAlbums/";
 	$dirname = $tmpd.$me."/";
+	$publicdir = $dirname."public/";
+	$privatedir = $dirname."private/";
 	
 	if (!is_dir($dirname)) {
-    mkdir($dirname, 0777, true);
+		mkdir($dirname, 0777, true);
+	}
+	if (!is_dir($publicdir)) {
+		mkdir($publicdir, 0777, true);
+	}
+	if (!is_dir($privatedir)) {
+		mkdir($privatedir, 0777, true);
 	}
 	
 ?>
 
 <?php 
-
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-
+if($_SERVER["REQUEST_METHOD"] == "POST") {		
+			
+	if($privacy==""){
+		$showError = "Upload failed! Set Privacy of your Photo.";
+	}
+	else{	
     try{
 		if(file_exists($_FILES['photos']['tmp_name']) || is_uploaded_file($_FILES['photos']['tmp_name'])) {
-			$albumdir = $dirname;
-			$picpath = $albumdir . basename($_FILES["photos"]["name"]);
-			move_uploaded_file($_FILES['photos']['tmp_name'], $albumdir.$_FILES["photos"]["name"]);
+			if($privacy=="Private"){
+				$albumdir = $privatedir;
+			}
+			if($privacy=="Public"){
+				$albumdir = $publicdir;
+			}			
+			
+			$filename = $privacy."_".$_FILES["photos"]["name"];
+			$picpath = $albumdir . basename($filename);
+			move_uploaded_file($_FILES['photos']['tmp_name'], $albumdir.$filename);
 			$showSuccess = "Photo uploaded to your Album!";
 	}
 	}
@@ -29,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     {
         $showError = "Photo upload failed!!";
     }
-
+	}
 
 }
 ?>
@@ -61,10 +86,11 @@ function Album() {
 <div style="text-align:center;"> 
 <button onclick="Album()">Back to myAlbum</button> <br/><br/>
 <?php echo '<h3>Hi  '.ucfirst($me).', Welcome to Photo Album! </h3><br/><br/>'; 
-
 echo '<form name="uploadPhotos" action="http://localhost:81/Vsocial/uploadPhotos.php" method="POST" enctype="multipart/form-data">
 <div style="text-align:center;">
-<pre>           Select Photo <input type="file" name="photos" id="photos"/></pre><br/> 
+<pre>           Select Photo <input type="file" name="photos" id="photos"/> 
+
+<div>Privacy: <input type="radio" id="Private" name="Privacy" value="Private"> <label for="Private">Private</label> <input type="radio" id="Public" name="Privacy" value="Public"> <label for="Public">Public</label></div></pre>
 </div><br/><br/>';
 echo '<input type="submit" value="Upload Photo to Album"></pre></form> ';
 

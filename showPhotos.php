@@ -43,15 +43,24 @@ function uploadPhotos() {
 
 $tmpd = "photoAlbums/";
 $dirname = $tmpd.$me."/";
-$images = glob($dirname."*.jpg");
+$publicdir = $dirname."public/";
+$privatedir = $dirname."private/";
+$publicimages = glob($publicdir."*.jpg");
+$privateimages = glob($privatedir."*.jpg");
 
-if(!$images){
+if(!$publicimages && !$privateimages){
 	echo '<br/><br/><br/><br/><br/><br/><strong>No photos in your album yet! Upload some photos first.</strong><br/><br/>';
 	echo '<button onclick="uploadPhotos()">Upload Photos</button>';
 }
 
-foreach($images as $image) {
-    echo ' <img height=300 width=300 src="'.$image.'" /> ';
+echo "<strong>Public Album</strong><br/>";
+foreach($publicimages as $image1) {
+    echo ' <img height=300 width=300 src="'.$image1.'" /> ';
+}
+
+echo "<br/><br/><br/><strong>Private Album</strong><br/>";
+foreach($privateimages as $image2) {
+    echo ' <img height=300 width=300 src="'.$image2.'" /> ';
 }
 
 if($showError) { 
