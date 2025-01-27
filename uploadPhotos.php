@@ -46,7 +46,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			
 			$filename = $privacy."_".$_FILES["photos"]["name"];
 			$picpath = $albumdir . basename($filename);
-			move_uploaded_file($_FILES['photos']['tmp_name'], $albumdir.$filename);
+			$filepath = $albumdir.$filename;
+			move_uploaded_file($_FILES['photos']['tmp_name'], $filepath);
 			$showSuccess = "Photo uploaded to your Album!";
 	}
 	}

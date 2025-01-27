@@ -39,6 +39,10 @@ $user=$_COOKIE['user'];
 				var profileUrl = "http://localhost:81/Vsocial/adminProfile.php";
 				location.replace(profileUrl);
 			}
+			function eventLogs(){
+				var eventLogUrl = "http://localhost:81/Vsocial/eventLogs.php";
+				location.replace(eventLogUrl);
+			}
 			function logout(){
 				var homepage = "http://localhost:81/Vsocial/logout.php";
 				location.replace(homepage);
@@ -57,7 +61,7 @@ $user=$_COOKIE['user'];
 echo 'You can perform following administrative operations.<br/><br/><br/>';
 
 
-echo '<pre><button onclick="manageusers()">Manage Users</button>  <button onclick="managebloggers()">Manage Bloggers</button>  <button onclick="manageBlogs()">Manage Blogs</button>  <button onclick="myProfile()">My Profile</button></pre></div> ';
+echo '<pre><button onclick="manageusers()">Manage Users</button>  <button onclick="managebloggers()">Manage Bloggers</button>  <button onclick="manageBlogs()">Manage Blogs</button>  <button onclick="myProfile()">My Profile</button>  <button onclick="eventLogs()">Event Logs</button></pre></div> ';
 
 
 
