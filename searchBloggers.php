@@ -44,6 +44,12 @@
 			$showError = "Enter a username and click on Search.";
 		}
 		
+		$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		$timestamp = date('m/d/Y h:i:s a', time());
+		$logdescription = "User searched with Username:".htmlentities($username);
+		$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+		$logresult = mysqli_query($conn, $logsql);
+		
 		if($cond == false){
 		$sql = "SELECT fname, lname, address, pic from bloggers WHERE username='".$username."'"; 		
 		$result = mysqli_query($conn, $sql);

@@ -48,6 +48,7 @@ function blogger() {
 $showAlert = false; 
 $showError = false; 
 $exists=false; 
+$logdescription = "";
 	
 if($_SERVER["REQUEST_METHOD"] == "POST") { 
 	 
@@ -69,7 +70,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		}			
 		else{
 			if(($password == $cpassword) && $exists==false) { 
-					 
+									 
 				$sql = "INSERT INTO `users` ( `username`, 
 					`password`) VALUES ('$username', 
 					'$password')"; 
@@ -79,6 +80,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				$sqlc = "SELECT * FROM users";
 				$result2 = mysqli_query($conn, $sqlc); 				
 				$ucount = mysqli_num_rows($result2);
+				
+				$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+				$timestamp = date('m/d/Y h:i:s a', time());
+				$logdescription = "User registered with Username:".htmlentities($username);
+				$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+				$logresult = mysqli_query($conn, $logsql);
+				
 				
 				$xml = new DOMDocument('1.0', 'utf-8');
 				$xml->formatOutput = true; 

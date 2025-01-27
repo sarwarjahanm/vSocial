@@ -38,7 +38,7 @@ function home() {
 </html> 
 
 <?php 
-	
+$dbpassword='';
 $showAlert = false; 
 $showError = false; 
 $exists=false; 
@@ -76,9 +76,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			}
 	else if($password != $dbpassword){
 		$showError = "Wrong Username or Password!";
+		
+		$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		$timestamp = date('m/d/Y h:i:s a', time());
+		$logdescription = "Failed User Login Attempt! Username:".htmlentities($username)." Password:".htmlentities($password);
+		$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+		$logresult = mysqli_query($conn, $logsql);
 	}
 	
 	else if(($password == $dbpassword)) {
+		
+		$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		$timestamp = date('m/d/Y h:i:s a', time());
+		$logdescription = "Login Success! Username:".htmlentities($username);
+		$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+		$logresult = mysqli_query($conn, $logsql);
+		
 		$adminDashboard = "http://localhost:81/Vsocial/adminDashboard.php?user=".$username;
 		session_start();
 		$cookie_name = "user";

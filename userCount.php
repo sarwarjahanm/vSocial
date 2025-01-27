@@ -90,6 +90,12 @@ function validateForm() {
 				$ucount = $usercount->nodeValue;
 				$bcount = $bloggercount->nodeValue;
 				
+				$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+				$timestamp = date('m/d/Y h:i:s a', time());
+				$logdescription = htmlentities($param)." counted by anonymous user!";
+				$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+				$logresult = mysqli_query($conn, $logsql);
+				
 				if($param == "users"){
 					$showSuccess = "Total number of users: ".$ucount;
 				}
