@@ -21,6 +21,12 @@ $message = $_POST["message"];
 					'$message','$sender')"; 
 		
 		$result1 = mysqli_query($conn, $sql1);
+		
+		$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		$timestamp = date('m/d/Y h:i:s a', time());
+		$logdescription = "A message sent by ".htmlentities($sender)." to ".htmlentities($username);
+		$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+		$logresult = mysqli_query($conn, $logsql);
 	}
 	else{
 		$showError = "You cannot send a blank message!";		

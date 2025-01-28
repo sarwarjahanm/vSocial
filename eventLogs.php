@@ -3,12 +3,11 @@
 	$showError = false;	
 	$cond = false;
 	
-	if($_COOKIE['isloggedin'] == false) {
-	
-    header("location:Home.php");
-    exit();
+	if(!isset($_COOKIE['isloggedin'])) {
+	$showError = "You are not authorised to view event logs!";
+	echo '<style>#logtable{visibility: hidden}</style>';
+	echo '<style>#butdash{visibility: hidden}</style>';
 	}
-	
 ?>
 
 
@@ -20,14 +19,13 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
-
 <script>
 function dashboard() {
   location.replace("http://localhost:81/Vsocial/adminDashboard.php")
 }
 </script>
 
-<body style="background-image: url(http://localhost:81/VSocial/aabg.png); background-position: center">  <button onclick="dashboard()">Admin Dashboard</button><br/>
+<body style="background-image: url(http://localhost:81/VSocial/aabg.png); background-position: center">  <button onclick="dashboard()" id="butdash">Admin Dashboard</button><br/>
 	
 <div style="text-align:center;"> 
 <h2>:Event Logs:</h2>
@@ -88,7 +86,7 @@ if($showError) {
 
 	if($cond == true){
 		
-	  echo '<br/><table style="border: 1px solid black;margin-left:auto;margin-right:auto; "> 
+	  echo '<div id="logtable"><br/><table style="border: 1px solid black;margin-left:auto;margin-right:auto; "> 
 				<tr style="border: 1px solid black;">
 					<th style="border: 1px solid black;">URL</th>
 					<th style="border: 1px solid black;">TimeStamp</th>
@@ -105,7 +103,7 @@ if($showError) {
       
             endwhile; 
 			
-      echo '</table>';
+      echo '</table></div>';
 	  
 	}
 	  

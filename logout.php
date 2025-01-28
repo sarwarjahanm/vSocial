@@ -1,6 +1,14 @@
 <?php 
+include 'dbconnect.php';
+$me = $_COOKIE['user'];
 session_start();
 $_SESSION = array();
+
+	$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+	$timestamp = date('m/d/Y h:i:s a', time());
+	$logdescription = "User Logged Out ".htmlentities($me);
+	$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+	$logresult = mysqli_query($conn, $logsql);
 
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();

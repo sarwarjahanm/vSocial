@@ -92,7 +92,7 @@ function validateForm() {
 				
 				$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 				$timestamp = date('m/d/Y h:i:s a', time());
-				$logdescription = htmlentities($param)." counted by anonymous user!";
+				$logdescription = htmlentities($param)." counted by anonymous user!"."<br/>UserAgent:".$_SERVER['HTTP_USER_AGENT'];
 				$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
 				$logresult = mysqli_query($conn, $logsql);
 				

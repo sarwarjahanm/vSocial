@@ -16,8 +16,15 @@ $user = $_POST["uname"];
 	if(($newPass == $confPass) && ($newPass != "" && $confPass != "")){
 		$showSuccess = "Password Changed Successfully!";
 		$sql = "UPDATE `users` SET password='".$newPass."' WHERE username='".$user."'"; 
-		
 		mysqli_query($conn, $sql);
+		
+	$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+	$timestamp = date('m/d/Y h:i:s a', time());
+	$logdescription = "Password changed for ".htmlentities($user);
+	$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+	$logresult = mysqli_query($conn, $logsql);
+		
+	
 	}
 	else{
 		$showError = "Password fields cannot be blank and both values must match!";		

@@ -27,9 +27,14 @@ $addr = $_POST["addr"];
 
 	if($fname != "" && $lname != ""){
 		$showSuccess = "Profile Updated!";
-		$sql = "UPDATE `admins` SET fname='".$fname."', lname='".$lname."', address='".$addr."' WHERE username='".$me."'"; 
-		
+		$sql = "UPDATE `admins` SET fname='".$fname."', lname='".$lname."', address='".$addr."' WHERE username='".$me."'"; 		
 		mysqli_query($conn, $sql);
+	
+		$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		$timestamp = date('m/d/Y h:i:s a', time());
+		$logdescription = "Profile details updated for: ".htmlentities($me);
+		$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+		$logresult = mysqli_query($conn, $logsql);
 	}
 	else{
 		$showError = "FirstName and LastName are required fields!";		

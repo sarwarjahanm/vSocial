@@ -1,5 +1,6 @@
 <?php
 	include 'dbconnect.php';
+	
 	$showError = false;	
 	$cond = false;
 	if($_COOKIE['isloggedin'] == false) {
@@ -7,6 +8,13 @@
     header("location:Home.php");
     exit();
 	}
+
+$adminuser = $_COOKIE['user'];	
+$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+$timestamp = date('m/d/Y h:i:s a', time());
+$logdescription = "Manage Users page accessed by: ".htmlentities($adminuser);
+$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+$logresult = mysqli_query($conn, $logsql);
 	
 ?>
 
@@ -76,6 +84,12 @@ function delUser(usr) {
 		$sql = "SELECT * from users"; 		
 		$result = mysqli_query($conn, $sql);
 		
+		$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		$timestamp = date('m/d/Y h:i:s a', time());
+		$logdescription = "User: ".htmlentities($uname).", has been deleted by: ".htmlentities($adminuser);
+		$logsql1 = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+		$logresult = mysqli_query($conn, $logsql1);
+		
 		$sqlc = "SELECT * FROM users";
 		$result2 = mysqli_query($conn, $sqlc); 				
 		$ucount = mysqli_num_rows($result2);
@@ -119,6 +133,12 @@ function delUser(usr) {
 				$sql = "UPDATE `users` SET fname='".$fname."', lname='".$lname."', address='".$address."' WHERE username='".$uname."'";  		
 				$result = mysqli_query($conn, $sql);
 				$count = mysqli_affected_rows($conn);
+				
+					$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+					$timestamp = date('m/d/Y h:i:s a', time());
+					$logdescription = "User details for user: ".htmlentities($uname).", has been updated by: ".htmlentities($adminuser);
+					$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+					$logresult = mysqli_query($conn, $logsql);
 				
 				if ($count > 0) {
 					$showError = "Records updated";

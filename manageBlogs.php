@@ -8,6 +8,13 @@
     header("location:Home.php");
     exit();
 	}
+
+$adminuser = $_COOKIE['user'];	
+$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+$timestamp = date('m/d/Y h:i:s a', time());
+$logdescription = "Manage Blogs page accessed by: ".htmlentities($adminuser);
+$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+$logresult = mysqli_query($conn, $logsql);
 	
 ?>
 
@@ -80,6 +87,12 @@ function delBlog(blog) {
 				$result = mysqli_query($conn, $sql5);
 				$count = mysqli_affected_rows($conn);
 		$showError = "Deleted the Blog: ".$blogTitle;
+		
+					$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+					$timestamp = date('m/d/Y h:i:s a', time());
+					$logdescription = "Blog with Title: ".htmlentities($blogTitle).", has been deleted by: ".htmlentities($adminuser);
+					$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+					$logresult = mysqli_query($conn, $logsql);	
 		
 		$sql = "SELECT * from blogs"; 		
 		$result = mysqli_query($conn, $sql);

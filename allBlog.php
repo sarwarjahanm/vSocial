@@ -5,6 +5,12 @@
 	$sql = "Select * from blogs";
 	$result = mysqli_query($conn, $sql);
 	
+	$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+	$timestamp = date('m/d/Y h:i:s a', time());
+	$logdescription = "All Blogs viewed by ".htmlentities($currentuser);
+	$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+	$logresult = mysqli_query($conn, $logsql);
+	
 ?>
 
 

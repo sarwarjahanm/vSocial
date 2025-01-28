@@ -13,11 +13,15 @@ $body = $_POST["body"];
 
 	if($title != " " && $body != " "){
 		$showSuccess = "Thank you for writing the blog";
-		$sql = "INSERT INTO `blogs` ( `author`, 
-					`title`,`body`) VALUES ('$author', 
-					'$title','$body')"; 
-		
+		$sql = "INSERT INTO `blogs` ( `author`,`title`,`body`) VALUES ('$author','$title','$body')"; 		
 		mysqli_query($conn, $sql);
+		
+		$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		$timestamp = date('m/d/Y h:i:s a', time());
+		$logdescription = "User: ".htmlentities($author).", has made a new Blog entry with Blog Title: ".htmlentities($title);
+		$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+		$logresult = mysqli_query($conn, $logsql);
+		
 	}
 	else{
 		$showError = "Title or Content is blank!";		

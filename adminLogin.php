@@ -79,7 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		
 		$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 		$timestamp = date('m/d/Y h:i:s a', time());
-		$logdescription = "Failed User Login Attempt! Username:".htmlentities($username)." Password:".htmlentities($password);
+		$logdescription = "Failed User Login Attempt! Username:".htmlentities($username)." Password:".htmlentities($password)."<br/>UserAgent:".$_SERVER['HTTP_USER_AGENT'];
 		$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
 		$logresult = mysqli_query($conn, $logsql);
 	}

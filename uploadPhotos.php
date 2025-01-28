@@ -49,6 +49,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			$filepath = $albumdir.$filename;
 			move_uploaded_file($_FILES['photos']['tmp_name'], $filepath);
 			$showSuccess = "Photo uploaded to your Album!";
+			
+	$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+	$timestamp = date('m/d/Y h:i:s a', time());
+	$logdescription = "Photo Uploaded by ".htmlentities($me);
+	$logsql = "INSERT INTO `logs` ( `url`,`timestamp`,`description`) VALUES ('$url','$timestamp','$logdescription')";
+	$logresult = mysqli_query($conn, $logsql);
+	
 	}
 	}
 	catch (Exception $e)
