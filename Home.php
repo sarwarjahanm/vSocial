@@ -39,10 +39,13 @@ function searchBloggers() {
 function counts() {
   location.replace("http://localhost:81/Vsocial/userCount.php")
 }
+function about() {
+  location.replace("http://localhost:81/Vsocial/about.html")
+}
 </script>
 	
 <body style="background-image: url(http://localhost:81/VSocial/dash.jpg); background-position: center"> 
-	
+<div style="text-align:right;"><button onclick="about()">Credits</button></div>	
 	
 <div style="text-align:center;"> 
 	<h2>Welcome to VSocial</h2><br/><br/><br/><br/><br/>
@@ -50,7 +53,6 @@ function counts() {
 <p>You can visit our Registration or Login page by clicking the following buttons.</p><br/>
 <pre><button onclick="register()">Registration Page</button>  <button onclick="login()">User Login Page</button>  <button onclick="blogin()">Blogger Login Page</button>  <button onclick="searchUser()">Search Users</button>  <button onclick="searchBloggers()">Search Bloggers</button></pre>
 <br/><button onclick="counts()">User Counts</button>
-</div> 
-	
+</div> 	
 </body> 
 </html> 
