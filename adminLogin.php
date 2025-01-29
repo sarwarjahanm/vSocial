@@ -39,6 +39,7 @@ function home() {
 
 <?php 
 $dbpassword='';
+$role='';
 $showAlert = false; 
 $showError = false; 
 $exists=false; 
@@ -63,12 +64,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$password = $_POST["password"]; 
 			
 	
-	$sql = "Select password from admins where username='$username'"; 
+	$sql = "Select password,role from admins where username='$username'"; 
 	
 	$result = mysqli_query($conn, $sql); 
 	
 	while ($row = $result->fetch_assoc()) {
     $dbpassword = $row['password'];
+	$role = $row['role'];
 	}
 
 	if($username == ""){
@@ -104,6 +106,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		
 		$cookie_name = "isadmin";
 		$cookie_value = "true";
+		setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+		
+		$cookie_name = "Role";
+		$cookie_value = $role;
 		setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
 		
 		header("Location: $adminDashboard");
