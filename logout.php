@@ -22,6 +22,7 @@ session_destroy();
 setcookie("user", "", time() - 3600, "/");
 setcookie("isloggedin", "", time() - 3600, "/");
 setcookie("isadmin", "", time() - 3600, "/");
+setcookie("Role", "", time() - 3600, "/");
 header("location:Home.php");
 exit();
 

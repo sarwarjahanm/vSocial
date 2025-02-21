@@ -10,8 +10,18 @@ $user=$_COOKIE['user'];
 $role=$_COOKIE['Role'];
 # $_SESSION["user"] = $user;
 	
+$showmessage = "You can perform following administrative operations.";	
 	if($role != "S") {
 	echo '<style>#manageAdmin{visibility: hidden}</style>';
+	}
+	if($role == "U") {
+	echo '<style>#manageAdmin{visibility: hidden}</style>';
+	echo '<style>#manageUsers{visibility: hidden}</style>';
+	echo '<style>#manageBloggers{visibility: hidden}</style>';
+	echo '<style>#manageBlogs{visibility: hidden}</style>';
+	echo '<style>#eventLogs{visibility: hidden}</style>';
+	echo '<style>#myProfile{visibility: hidden}</style>';
+	$showmessage = "You donot have Admin privileges!";
 	}
 	
 	$sqlu = "SELECT * from users"; 
@@ -94,13 +104,12 @@ $role=$_COOKIE['Role'];
 	
 <div style="text-align:center;"> 
 	<h2>Vsocial Admin Dashboard</h2><br/><br/><br/><br/><br/>
-<?php echo 'Welcome  '.ucfirst($user).',&emsp;<button onclick="myProfile()">My Profile</button>&emsp;<button onclick="logout()">Log Out</button><br/><br/><br/>';
+<?php echo 'Welcome  '.ucfirst($user).',&emsp;<button onclick="myProfile()" id="myProfile">My Profile</button>&emsp;<button onclick="logout()">Log Out</button><br/><br/><br/>';
 
-echo 'You can perform following administrative operations.<br/><br/><br/>';
+echo $showmessage.'<br/><br/>';
+
 echo '<button onclick="manageadmins()" id="manageAdmin">Manage Admins</button>';
-echo '<pre><button onclick="manageusers()">Manage Users</button>  <button onclick="managebloggers()">Manage Bloggers</button>  <button onclick="manageBlogs()">Manage Blogs</button>  <button onclick="eventLogs()">Event Logs</button></pre></div> ';
-
-
+echo '<pre><button onclick="manageusers()" id="manageUsers">Manage Users</button>  <button onclick="managebloggers()" id="manageBloggers">Manage Bloggers</button>  <button onclick="manageBlogs()" id="manageBlogs">Manage Blogs</button>  <button onclick="eventLogs()" id="eventLogs">Event Logs</button></pre></div> ';
 
 ?>
 	
