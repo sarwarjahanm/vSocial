@@ -30,6 +30,7 @@ function home() {
 			Username <input type="text" name="username" id="username" maxlength=20/><br/><br/>
 			Password <input type="password" name="password" id="password" maxlength=20/></br><br/>
 			         <input type="submit" id="login" value="Login"/>
+			<!-- a9d402bfcde5792a8b531b3a82669585 -->
 		</div> 	 
 	</form> 
 </div> 
