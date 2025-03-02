@@ -10,7 +10,6 @@ Step 3: phpmyadmin - Database setup for Demo apps
             c. Click on database **basics** from left panel, then click **SQL** tab on right panel and execute following queries
 CREATE TABLE jsdemo(fname VARCHAR(30),lname VARCHAR(30),address VARCHAR(250),phone VARCHAR(10));
 CREATE TABLE dbdemo(fname VARCHAR(30),lname VARCHAR(30),address VARCHAR(250),phone VARCHAR(10));
-
             d. Click on New and Create database **vsocial** 
             e. Click on database **vsocial** from left panel, then click **SQL** tab on right panel and execute following queries
    CREATE TABLE users(username VARCHAR(30),password VARCHAR(25),fname VARCHAR(30),lname VARCHAR(30),address VARCHAR(250),pic VARCHAR(250));
