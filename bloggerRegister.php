@@ -75,8 +75,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		}			
 		else{
 			if(($password == $cpassword) && $exists==false) { 
-					 
-				$sql = "INSERT INTO `bloggers` ( `username`,`password`,`fname`,`lname`,`address`) VALUES ('$username','$password','$fname','$lname','$address')";
+				$epassword = base64_encode(base64_encode($password));	 
+				$sql = "INSERT INTO `bloggers` ( `username`,`password`,`fname`,`lname`,`address`) VALUES ('$username','$epassword','$fname','$lname','$address')";
 		
 				$result = mysqli_query($conn, $sql); 
 				

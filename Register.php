@@ -70,10 +70,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		}			
 		else{
 			if(($password == $cpassword) && $exists==false) { 
-									 
+			
+				$epassword = md5($password);					 
 				$sql = "INSERT INTO `users` ( `username`, 
 					`password`) VALUES ('$username', 
-					'$password')"; 
+					'$epassword')"; 
 		
 				$result = mysqli_query($conn, $sql); 
 				
