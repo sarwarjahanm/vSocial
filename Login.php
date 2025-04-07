@@ -33,7 +33,7 @@ function home() {
 			Password <input type="password" name="password" id="password" maxlength=20/></br><br/>
 			         <input type="submit" id="login" value="Login"/>
 		</div> 	 
-	</form> 
+	</form> <!-- test:Bob/WW05aQ== -->
 </div> 
 	
 </body> 
