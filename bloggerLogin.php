@@ -47,7 +47,7 @@ $showError = false;
 $exists=false; 
 	
 if($_SERVER["REQUEST_METHOD"] == "POST") { 
-	 
+	$dbpassword=''; 
 	include 'dbconnect.php'; 
 	
 	$username = $_POST["username"]; 
@@ -65,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	if($username == ""){
 				$showError = "Username or Password field is blank!";
 			}
-	else if($password != $dbpassword){
+	else if($password != $dbpassword && (base64_encode(base64_encode($password)) != $dbpassword)){
 		$showError = "Wrong Username or Password!";
 		
 		$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
@@ -75,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		$logresult = mysqli_query($conn, $logsql);
 	}
 	
-	else if(($password == $dbpassword)) {
+	else if(($password == $dbpassword) || (base64_encode(base64_encode($password)) == $dbpassword)) {
 		
 		$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 		$timestamp = date('m/d/Y h:i:s a', time());

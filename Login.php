@@ -63,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	if($username == ""){
 				$showError = "Username or Password field is blank!";
 			}
-	else if($password != $dbpassword){
+	else if($password != $dbpassword && (md5($password) != $dbpassword)){
 		$showError = "Wrong Username or Password!";
 		
 		$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
@@ -74,7 +74,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		
 	}
 	
-	else if(($password == $dbpassword)) {
+	else if(($password == $dbpassword) || (md5($password) == $dbpassword)) {
 		
 		$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 		$timestamp = date('m/d/Y h:i:s a', time());

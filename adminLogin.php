@@ -30,7 +30,6 @@ function home() {
 			Username <input type="text" name="username" id="username" maxlength=20/><br/><br/>
 			Password <input type="password" name="password" id="password" maxlength=20/></br><br/>
 			         <input type="submit" id="login" value="Login"/>
-			<!-- a9d402bfcde5792a8b531b3a82669585 -->
 		</div> 	 
 	</form> 
 </div> 
@@ -56,6 +55,28 @@ $exists=false;
 				$usercount = $element->getElementsByTagName('admins')->item(0);
 				$usercount->nodeValue = $ucount;
 				htmlentities($xml->save('usercount.xml'));
+				
+	$sqlu = "SELECT * from users"; 
+	$sqlb = "SELECT * from bloggers";
+	$sqla = "SELECT * from admins";
+	$sqll = "SELECT * from logs";
+ 	
+	$resultu = mysqli_query($conn, $sqlu);
+	$resultb = mysqli_query($conn, $sqlb);	
+	$resulta = mysqli_query($conn, $sqla);
+	$resultl = mysqli_query($conn, $sqll);
+	
+	$userdetails = mysqli_fetch_all($resultu, MYSQLI_ASSOC);
+	file_put_contents('admin/users.json', json_encode($userdetails));
+	
+	$bloggerdetails = mysqli_fetch_all($resultb, MYSQLI_ASSOC);
+	file_put_contents('admin/bloggers.json', json_encode($bloggerdetails));
+	
+	$admindetails = mysqli_fetch_all($resulta, MYSQLI_ASSOC);
+	file_put_contents('admin/admins.json', json_encode($admindetails));
+	
+	$logdetails = mysqli_fetch_all($resultl, MYSQLI_ASSOC);
+	file_put_contents('admin/logs.json', json_encode($logdetails));	
 	
 if($_SERVER["REQUEST_METHOD"] == "POST") { 
 	 
