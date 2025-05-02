@@ -31,7 +31,7 @@ function home() {
 			Password <input type="password" name="password" id="password" maxlength=20/></br><br/>
 			         <input type="submit" id="login" value="Login"/>
 		</div> 	 
-	</form> <!-- d41e98d1eafa6d6011d3a70f1a5b92f0 -->
+	</form> 
 </div> 
 	
 </body> 
