@@ -33,11 +33,10 @@ function blogger() {
 	<form action="bloggerRegister.php" method="post"> 
 		<div>
 			Username         <input type="text" name="username" id="username" maxlength=20/><br/><br/>
-			Password         <input type="password" name="password" id="password" maxlength=20/></br><br/>
-			Confirm Password <input type="password" name="cpassword" id="cpassword" maxlength=20/></br><br/>
 			First Name <input type="text" name="fname" id="fname" maxlength=25/></br><br/>
 			Last Name <input type="text" name="lname" id="lname" maxlength=25/></br><br/>
 			Address <input type="textarea" name="address" id="address" maxlength=200/></br><br/>
+			Email <input type="text" name="email" id="email" maxlength=50/></br><br/>
 			        <input type="submit" id="register" value="Register"/>
 		</div> 	 
 	</form> 
@@ -57,11 +56,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	include 'dbconnect.php'; 
 	
 	$username = $_POST["username"]; 
-	$password = $_POST["password"]; 
-	$cpassword = $_POST["cpassword"]; 
 	$fname = $_POST["fname"];
 	$lname = $_POST["lname"];
 	$address = $_POST["address"];
+	
+	//$password = $_POST["password"];	Legacy registration where password was taken from registration form
 				
 	$sql = "Select * from bloggers where username='$username'"; 
 	
@@ -70,12 +69,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$num = mysqli_num_rows($result); 
 		
 	if($num == 0) {
-		if($username == "" || $password == ""){
-			$showError = "Username or Password cannot be blank!";
+		if($username == ""){
+			$showError = "Username cannot be blank!";
 		}			
 		else{
-			if(($password == $cpassword) && $exists==false) { 
-				$epassword = base64_encode(base64_encode($password));	 
+			if($exists==false) { 
+				//$epassword = base64_encode(base64_encode($password));		Legacy registration flow
+				$epassword = base64_encode(base64_encode($username));
 				$sql = "INSERT INTO `bloggers` ( `username`,`password`,`fname`,`lname`,`address`) VALUES ('$username','$epassword','$fname','$lname','$address')";
 		
 				$result = mysqli_query($conn, $sql); 
@@ -107,7 +107,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				} 
 			} 
 			else { 
-				$showError = "Passwords do not match"; 
+				$showError = "Registration Failed Try again!"; 
 			}
 		}		
 	}// end if 
@@ -129,7 +129,7 @@ if($num>0)
 			alert-dismissible fade show" role="alert"> 
 	
 			<strong>Success!</strong> Your account is 
-			now created and you can login. 
+			now created and you can login using the password sent to your email. 
 			<button type="button" class="close"
 				data-dismiss="alert" aria-label="Close"> 
 				<span aria-hidden="true">×</span> 

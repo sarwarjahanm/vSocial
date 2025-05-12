@@ -34,7 +34,8 @@ function home() {
 			Password <input type="password" name="password" id="password" maxlength=20/></br><br/>
 			         <input type="submit" id="login" value="Login"/>
 		</div> 	 
-	</form> 
+	</form><br/>
+	<a href="http://localhost:81/Vsocial/ForgotPassword.html">Forgot Password?</a>
 </div> 
 	
 </body> 
