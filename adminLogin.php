@@ -19,10 +19,10 @@ function home() {
 
 </script>
 	
-<body style="background-image: url(http://localhost:81/VSocial/abg.jpg)"> 
+<body style="color:white;background-image: url(http://localhost:81/VSocial/abg.jpg)"> 
 	
 	
-<div style="text-align:right;"> 
+<div style="text-align:right;color:white;"> 
 <button onclick="home()">Home Page</button>  <br/><br/>
 	<h3 style="color:white;">Admin Panel</h3>
 	<form action="adminLogin.php" method="post"> 
@@ -31,8 +31,8 @@ function home() {
 			Password <input type="password" name="password" id="password" maxlength=20/></br><br/>
 			         <input type="submit" id="login" value="Login"/>
 		</div> 	 
-	</form> 
-</div> 
+	</form>
+</div><br/> 
 	
 </body> 
 </html> 
@@ -151,7 +151,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 	if($showError) { 
 	
-		echo ' <div style="text-align:right;" class="alert alert-danger 
+		echo ' <br/><div style="text-align:right;color:white;" class="alert alert-danger 
 			alert-dismissible fade show" role="alert"> 
 		<strong>Error!</strong> '. $showError.'
 	

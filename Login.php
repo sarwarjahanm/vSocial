@@ -61,7 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		$dbpassword = $row['password'];
 	}
 	
-	if($username == ""){
+	if($username == "" || $password == ""){
 				$showError = "Username or Password field is blank!";
 			}
 	else if($password != $dbpassword && (md5($password) != $dbpassword)){
